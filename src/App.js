@@ -7,12 +7,9 @@ import './App.css';
 function App() {
   const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend'}, {'id': 1, 'folderName': 'Backend'}]);
 
-  const deleteFolder = (id) => {
-      const index = folders.map((item) => item.id).indexOf(id);
-      setFolders(folders => {
-        delete folders[index];
-        return folders;
-      });
+  const deleteFolderHandler = (folderId) => {
+    const folderFiltered = folders.filter(elem => elem.id !== folderId);
+    setFolders(folderFiltered);
   };
 
   return (
@@ -20,7 +17,7 @@ function App() {
       <Header />
       <div className='display'>
         <Menu 
-          onDelete={deleteFolder}
+          onDelete={deleteFolderHandler}
           folders={folders}
         />
         <Display />
