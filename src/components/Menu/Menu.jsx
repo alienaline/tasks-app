@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonRemove from './ButtonRemove';
 import ButtonCreateFolder from './ButtonCreateFolder';
+import ButtonFolder from './ButtonFolder';
 import { CgDetailsMore } from 'react-icons/cg';
 import { MenuStyles } from '../../styles/Styles';
-
 
 function Menu(props) {
 
@@ -20,12 +20,13 @@ function Menu(props) {
                         <li className='folderButton'
                             key={item.id}
                             id={item.id}>
-                            <button className='folderName'>{item.folderName}</button>
-                            <ButtonRemove 
-                                key={item.id} 
-                                onDelete={props.onDelete}
+                            <ButtonFolder 
                                 id={item.id}
-                            />
+                                onClick={props.onClick}
+                                folderName={item.folderName}/>
+                            <ButtonRemove 
+                                id={item.id}
+                                onDelete={props.onDelete}/>
                         </li>
                     )}
                 </ul>
@@ -37,7 +38,8 @@ function Menu(props) {
 
 Menu.propTypes = {
     folders: PropTypes.array,
-    onDelete: PropTypes.func
+    onDelete: PropTypes.func,
+    onClick: PropTypes.func,
 };
 
 export default Menu;

@@ -1,18 +1,30 @@
 import React from 'react';
-import FolderHeader from './FolderHeader';
+import Header from './Header';
 import Comment from './Comment';
 import { DisplayStyles } from '../../styles/Styles';
+import PropTypes from 'prop-types';
+import TasksListForm from './TasksListForm';
+import TasksList from './TasksList';
 
-function Display() {
+
+function Display(props) {
     return (
         <DisplayStyles>
             <div className='Display'>
-                <FolderHeader />
+                <Header 
+                    currentFolder={props.currentFolder} />
                 <Comment />
                 <hr />
+                <TasksList 
+                    currentFolder={props.currentFolder} />
+                <TasksListForm />
             </div>
         </DisplayStyles>
     );
 }
+
+Display.propTypes = {
+    currentFolder: PropTypes.object,
+};
 
 export default Display;

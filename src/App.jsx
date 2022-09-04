@@ -5,7 +5,13 @@ import Display from './components/Display/Display';
 import './App.css';
 
 function App() {
-  const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend'}, {'id': 1, 'folderName': 'Backend'}]);
+  const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'tasksList': ['create repo', 'learn TS']}, {'id': 1, 'folderName': 'Backend', 'tasksList': ['learn Python']}]);
+  const [currentFolder, setCurrentFolder] = useState();
+
+  const chooseFolderHandler = (folderId) => {
+    setCurrentFolder(folders[folderId]);
+  };
+
 
   const deleteFolderHandler = (folderId) => {
     const folderFiltered = folders.filter(elem => elem.id !== folderId);
@@ -15,12 +21,14 @@ function App() {
   return (
     <div className='app'>
       <Header />
-      <div className='display'>
+      <div className='desktop'>
         <Menu 
           onDelete={deleteFolderHandler}
+          onClick={chooseFolderHandler}
           folders={folders}
-        />
-        <Display />
+          currentFolder={currentFolder}/>
+        <Display 
+          currentFolder={currentFolder}/>
       </div>
     </div>
   );

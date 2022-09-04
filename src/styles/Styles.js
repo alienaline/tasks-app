@@ -59,6 +59,11 @@ export const MenuStyles = styled.div`
 export const DisplayStyles = styled.div`
     margin: 85px 60px 60px 60px;
 
+    .icon {
+        margin-right: 10px;
+        color: #75787e;
+    }
+
     hr {
         background: #F1F1F1;
         border: 1px solid #F1F1F1;
@@ -80,5 +85,24 @@ export const DisplayStyles = styled.div`
     .commentInput {
         width: 100%;
         color: #75787e;
+        font-style: italic;
+    }
+
+    .commentText {
+        font-style: italic;
+    }
+
+    .tasksList {
+        margin: 30px 0;
+    }
+
+    .tasksListForm {
+        display: flex;
+        align-items: center;
+        color: #75787e;
+    }
+
+    .inputTasksForm {
+        width: 100%;
     }
 `;
