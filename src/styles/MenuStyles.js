@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const HeaderStyles = styled.header`
-    height: 40px;
-    background-color: #DAF7A6;
-`;
-
 export const MenuStyles = styled.div`
     background-color: #F4F6F8;
     border-right: 2px solid #F1F1F1;
@@ -53,56 +48,5 @@ export const MenuStyles = styled.div`
         &:hover {
             color: #696969;
         }
-    }
-`;
-
-export const DisplayStyles = styled.div`
-    margin: 85px 60px 60px 60px;
-
-    .icon {
-        margin-right: 10px;
-        color: #75787e;
-    }
-
-    hr {
-        background: #F1F1F1;
-        border: 1px solid #F1F1F1;
-        margin: 5px 0;
-    }
-
-    .folderHeader {
-        margin-bottom: 10px;
-        font-size: 36px;
-        font-weight: 700;
-    }
-
-    .comment {
-        display: flex;
-        font-size: 12px;
-        color: #75787e;
-    }
-
-    .commentInput {
-        width: 100%;
-        color: #75787e;
-        font-style: italic;
-    }
-
-    .commentText {
-        font-style: italic;
-    }
-
-    .tasksList {
-        margin: 30px 0;
-    }
-
-    .tasksListForm {
-        display: flex;
-        align-items: center;
-        color: #75787e;
-    }
-
-    .inputTasksForm {
-        width: 100%;
     }
 `;

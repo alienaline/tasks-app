@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function FolderHeader(props) {
     return (
         <h1 className='folderHeader'>
-            { props.currentFolder ? props.currentFolder.folderName : 'hello world!' }
+            { props.currentFolder ? props.currentFolder.folderName : 'Welcome!' }
         </h1>
     );
 }

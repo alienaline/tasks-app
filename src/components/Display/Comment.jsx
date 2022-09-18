@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function Comment() {
+function Comment(props) {
     const [date, setDate] = useState('');
     const [comment, setComment] = useState('');
 
@@ -13,13 +14,13 @@ function Comment() {
     };
 
     return (
-        <div className='comment'>
+        <div className={`comment ${props.currentFolder ? 'active' : 'disabled'}`}>
             <p className='commentText'>
                 {comment}
             </p>
             <input 
                 type='text'
-                maxLength={65} 
+                maxLength={100} 
                 className='commentInput'
                 placeholder='write a comment'
                 onSubmit={() => changeComment()}>
@@ -28,5 +29,9 @@ function Comment() {
         </div>
     );
 }
+
+Comment.propTypes = {
+    currentFolder: PropTypes.object
+};
 
 export default Comment;

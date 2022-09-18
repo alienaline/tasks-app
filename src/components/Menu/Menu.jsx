@@ -4,7 +4,7 @@ import ButtonRemove from './ButtonRemove';
 import ButtonCreateFolder from './ButtonCreateFolder';
 import ButtonFolder from './ButtonFolder';
 import { CgDetailsMore } from 'react-icons/cg';
-import { MenuStyles } from '../../styles/Styles';
+import { MenuStyles } from '../../styles/MenuStyles';
 
 function Menu(props) {
 

@@ -16,6 +16,10 @@ function App() {
   const deleteFolderHandler = (folderId) => {
     const folderFiltered = folders.filter(elem => elem.id !== folderId);
     setFolders(folderFiltered);
+
+    if (currentFolder.id == folderId) {
+      setCurrentFolder();
+    }
   };
 
   return (

@@ -21,7 +21,11 @@ function TasksList(props) {
             </ul> 
         );
     } else {
-        return 'no tasks yet';
+        return (
+            <h2 className='mockText'>
+                Select or create a folder.
+            </h2>
+        );
     }
 }
 

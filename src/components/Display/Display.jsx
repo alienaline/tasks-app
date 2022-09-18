@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
+import DisplayHeader from './DisplayHeader';
 import Comment from './Comment';
-import { DisplayStyles } from '../../styles/Styles';
+import { DisplayStyles } from '../../styles/DisplayStyles';
 import PropTypes from 'prop-types';
 import TasksListForm from './TasksListForm';
 import TasksList from './TasksList';
@@ -11,13 +11,15 @@ function Display(props) {
     return (
         <DisplayStyles>
             <div className='Display'>
-                <Header 
+                <DisplayHeader 
                     currentFolder={props.currentFolder} />
-                <Comment />
+                <Comment 
+                    currentFolder={props.currentFolder} />
                 <hr />
                 <TasksList 
                     currentFolder={props.currentFolder} />
-                <TasksListForm />
+                <TasksListForm 
+                    currentFolder={props.currentFolder} />
             </div>
         </DisplayStyles>
     );

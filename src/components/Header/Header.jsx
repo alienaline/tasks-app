@@ -1,11 +1,15 @@
 import React from 'react';
-import { HeaderStyles } from '../../styles/Styles';
+import { HeaderStyles } from '../../styles/HeaderStyles';
 
 function Header() {
     return (
         <HeaderStyles>
-            <header className='Header'>
-            </header>
+            <div className='menu'>
+                <button type='button'
+                        className='menuButton'>
+                        Menu
+                </button>
+            </div>
         </HeaderStyles>
     );
 }
