@@ -18,7 +18,7 @@ function Menu(props) {
                 <ul>
                     {props.folders.map((item) => 
                         <li className='folderButton'
-                            key={item.id}
+                            key={item.folderName}
                             id={item.id}>
                             <ButtonFolder 
                                 id={item.id}

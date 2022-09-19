@@ -7,3 +7,9 @@
   grid-template-columns: 1fr 4fr;
 }
 
+@media (max-width: 960px) {
+  .desktop {
+    display: block;
+  }
+}
+

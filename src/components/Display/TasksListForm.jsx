@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import PropTypes from 'prop-types';
 
 
 function TasksListForm(props) {
     const [activeState, setActiveState] = useState(false);
+    const inputRef = useRef();
 
     const changeState = () => {
         setActiveState(prev => !prev);
@@ -21,13 +22,17 @@ function TasksListForm(props) {
             </button>
             <form className={`form ${activeState ? 'active' : 'disabled'}`}>
                 <input
+                    ref={inputRef}
                     type='text'
                     maxLength={120}
                     placeholder='write a task here'
                     className='inputTasksForm'>
                 </input>
-                <button type='submit'
-                        className='buttonSubmit'>Add to list</button> 
+                <button type='button'
+                        className='buttonSubmit'
+                        onClick={() => props.onClick(props.currentFolder.id, inputRef.current)}>
+                        Add to list
+                </button> 
                 <button type='button'
                         className='buttonCancel' 
                         onClick={() => changeState()}>
@@ -39,7 +44,8 @@ function TasksListForm(props) {
 }
 
 TasksListForm.propTypes = {
-    currentFolder: PropTypes.object
+    currentFolder: PropTypes.object,
+    onClick: PropTypes.func,
 };
 
 export default TasksListForm;

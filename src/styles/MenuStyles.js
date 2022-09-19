@@ -49,4 +49,15 @@ export const MenuStyles = styled.div`
             color: #696969;
         }
     }
+
+    @media (max-width: 960px) {
+        display: absolute;
+        width: 230px;
+
+        .menu {
+            display: block;
+            margin: 0 15px;
+            width: 200px;
+        }
+    }
 `;

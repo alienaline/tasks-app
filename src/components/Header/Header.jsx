@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeaderStyles } from '../../styles/HeaderStyles';
+import {AiOutlineMenu} from 'react-icons/ai';
 
 function Header() {
     return (
@@ -7,7 +8,7 @@ function Header() {
             <div className='menu'>
                 <button type='button'
                         className='menuButton'>
-                        Menu
+                        <AiOutlineMenu className='icon' />
                 </button>
             </div>
         </HeaderStyles>

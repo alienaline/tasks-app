@@ -1,17 +1,21 @@
+/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Display from './components/Display/Display';
 import './App.css';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 function App() {
-  const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'tasksList': ['create repo', 'learn TS']}, {'id': 1, 'folderName': 'Backend', 'tasksList': ['learn Python']}]);
+  const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'colorId': 0}, {'id': 1, 'folderName': 'Backend', 'colorId': 1}]);
+  const [tasks, setTasks] = useState([{'id': 0, 'folderId': 0, 'text': 'learnJs'}, {'id': 1, 'folderId': 1, 'text': 'learn python'}]);
   const [currentFolder, setCurrentFolder] = useState();
+  let nextId = 0;
+
 
   const chooseFolderHandler = (folderId) => {
     setCurrentFolder(folders[folderId]);
   };
-
 
   const deleteFolderHandler = (folderId) => {
     const folderFiltered = folders.filter(elem => elem.id !== folderId);
@@ -20,6 +24,10 @@ function App() {
     if (currentFolder.id == folderId) {
       setCurrentFolder();
     }
+  };
+
+  const addTaskHandler = (folderId, text) => {
+    setTasks([tasks, {'id': nextId++, 'folderId': folderId, 'text': text}]);
   };
 
   return (
@@ -32,7 +40,9 @@ function App() {
           folders={folders}
           currentFolder={currentFolder}/>
         <Display 
-          currentFolder={currentFolder}/>
+          currentFolder={currentFolder}
+          tasks={tasks} 
+          onClick={addTaskHandler} />
       </div>
     </div>
   );

@@ -1,20 +1,23 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function TasksList(props) {
 
     if (props.currentFolder) {
+        const list = [...props.tasks.filter((e) => e.folderId == props.currentFolder.id)];
+        
         return (
             <ul className='tasksList'>
-                {props.currentFolder.tasksList.map((item) => 
-                    <li key={item.toString()} 
+                {list.map((item) => 
+                    <li key={item.id.toString()} 
                         className='task'>
-                        <label key={item.toString()} 
+                        <label key={item.id.toString()} 
                                 className='taskText'>
                             <input type='checkbox' 
-                                    key={item.toString()} 
+                                    key={item.id.toString()} 
                                     className='icon checkbox' />
-                            {item}
+                            {item.text}
                         </label>
                     </li>
                 )}
@@ -30,7 +33,8 @@ function TasksList(props) {
 }
 
 TasksList.propTypes = {
-    currentFolder: PropTypes.object
+    currentFolder: PropTypes.object,
+    tasks: PropTypes.array
 };
 
 export default TasksList;

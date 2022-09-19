@@ -17,9 +17,12 @@ function Display(props) {
                     currentFolder={props.currentFolder} />
                 <hr />
                 <TasksList 
-                    currentFolder={props.currentFolder} />
+                    currentFolder={props.currentFolder}
+                    tasks={props.tasks} />
                 <TasksListForm 
-                    currentFolder={props.currentFolder} />
+                    currentFolder={props.currentFolder}
+                    tasks={props.tasks} 
+                    onClick={props.onClick} />
             </div>
         </DisplayStyles>
     );
@@ -27,6 +30,8 @@ function Display(props) {
 
 Display.propTypes = {
     currentFolder: PropTypes.object,
+    tasks: PropTypes.array,
+    onClick: PropTypes.func
 };
 
 export default Display;
