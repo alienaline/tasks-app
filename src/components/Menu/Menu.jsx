@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonRemove from './ButtonRemove';
-import ButtonCreateFolder from './ButtonCreateFolder';
+import ButtonCreateFolder from './ButtonNewFolder';
 import ButtonFolder from './ButtonFolder';
 import { CgDetailsMore } from 'react-icons/cg';
 import { MenuStyles } from '../../styles/MenuStyles';

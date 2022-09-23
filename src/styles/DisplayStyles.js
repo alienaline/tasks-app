@@ -41,6 +41,14 @@ export const DisplayStyles = styled.div`
         margin: 30px 0;
     }
 
+    .task {
+        margin: 15px 0;
+    }
+
+    .taskText {
+        font-size: 22px;
+    }
+
     .mockText {
         color: #B4B4B4;
         font-size: 22px;

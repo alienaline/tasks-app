@@ -12,6 +12,11 @@ function TasksListForm(props) {
         setActiveState(prev => !prev);
     };
 
+    const addToList = () => {
+        props.onClick(props.currentFolder.id, inputRef.current.value);
+        inputRef.current.value = '';
+    };
+
     return (
         <div className={`tasksListForm ${props.currentFolder ? 'active' : 'disabled'}`}>
             <button 
@@ -30,7 +35,7 @@ function TasksListForm(props) {
                 </input>
                 <button type='button'
                         className='buttonSubmit'
-                        onClick={() => props.onClick(props.currentFolder.id, inputRef.current)}>
+                        onClick={() => addToList()}>
                         Add to list
                 </button> 
                 <button type='button'

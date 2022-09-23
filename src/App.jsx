@@ -8,7 +8,7 @@ import { Prev } from 'react-bootstrap/esm/PageItem';
 
 function App() {
   const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'colorId': 0}, {'id': 1, 'folderName': 'Backend', 'colorId': 1}]);
-  const [tasks, setTasks] = useState([{'id': 0, 'folderId': 0, 'text': 'learnJs'}, {'id': 1, 'folderId': 1, 'text': 'learn python'}]);
+  const [tasks, setTasks] = useState([]);
   const [currentFolder, setCurrentFolder] = useState();
   let nextId = 0;
 
@@ -26,8 +26,8 @@ function App() {
     }
   };
 
-  const addTaskHandler = (folderId, text) => {
-    setTasks([tasks, {'id': nextId++, 'folderId': folderId, 'text': text}]);
+  const addTaskHandler = (folderId, text, event) => {
+    setTasks([...tasks, {'id': nextId++, 'folderId': folderId, 'text': text, 'checked': false}]);
   };
 
   return (

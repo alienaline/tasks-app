@@ -4,19 +4,25 @@ import PropTypes from 'prop-types';
 
 function TasksList(props) {
 
+    const setCheckedStatus = (id) => {
+        props.tasks[id].checked = !props.tasks[id].checked;
+    };
+
     if (props.currentFolder) {
         const list = [...props.tasks.filter((e) => e.folderId == props.currentFolder.id)];
         
         return (
             <ul className='tasksList'>
                 {list.map((item) => 
-                    <li key={item.id.toString()} 
+                    <li key={item.text.toString()} 
                         className='task'>
-                        <label key={item.id.toString()} 
+                        <label key={item.text.toString()} 
                                 className='taskText'>
                             <input type='checkbox' 
-                                    key={item.id.toString()} 
-                                    className='icon checkbox' />
+                                    key={item.text.toString()} 
+                                    id={item.id}
+                                    className='icon checkbox' 
+                                    onClick={(id) => setCheckedStatus(id)} />
                             {item.text}
                         </label>
                     </li>
