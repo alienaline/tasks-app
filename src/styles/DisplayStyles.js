@@ -21,22 +21,6 @@ export const DisplayStyles = styled.div`
         font-weight: 700;
     }
 
-    .comment {
-        display: flex;
-        font-size: 12px;
-        color: #75787e;
-    }
-
-    .commentInput {
-        width: 100%;
-        color: #75787e;
-        font-style: italic;
-    }
-
-    .commentText {
-        font-style: italic;
-    }
-
     .tasksList {
         margin: 30px 0;
     }

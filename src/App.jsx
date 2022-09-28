@@ -4,12 +4,11 @@ import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Display from './components/Display/Display';
 import './App.css';
-import { Prev } from 'react-bootstrap/esm/PageItem';
 
 function App() {
   const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'colorId': 0}, {'id': 1, 'folderName': 'Backend', 'colorId': 1}]);
   const [tasks, setTasks] = useState([]);
-  const [currentFolder, setCurrentFolder] = useState();
+  const [currentFolder, setCurrentFolder] = useState(null);
   let nextId = 0;
 
 
@@ -19,16 +18,34 @@ function App() {
 
   const deleteFolderHandler = (folderId) => {
     const folderFiltered = folders.filter(elem => elem.id !== folderId);
+    const tasksFiltered = tasks.filter(elem => elem.folderId !== folderId);
     setFolders(folderFiltered);
+    setTasks(tasksFiltered);
 
     if (currentFolder.id == folderId) {
-      setCurrentFolder();
+      setCurrentFolder(null);
     }
   };
 
-  const addTaskHandler = (folderId, text, event) => {
+  const addTaskHandler = (folderId, text) => {
+    if (text == '') return false;
+
     setTasks([...tasks, {'id': nextId++, 'folderId': folderId, 'text': text, 'checked': false}]);
   };
+
+  //const setCheckedStatus = (id) => {
+  //  setTasks(({tasks}) => (
+  //    [
+  //      ...tasks,
+  //      {
+  //        ...tasks[id],
+  //       ...tasks.folderId,
+  //       ...tasks.text,
+  //        checked: !tasks[id].checked,
+  //      }
+  //    ]
+  //  ));
+  // };
 
   return (
     <div className='app'>
@@ -42,7 +59,9 @@ function App() {
         <Display 
           currentFolder={currentFolder}
           tasks={tasks} 
-          onClick={addTaskHandler} />
+          onClick={addTaskHandler} 
+          //setCheckedStatus={setCheckedStatus} 
+          />
       </div>
     </div>
   );

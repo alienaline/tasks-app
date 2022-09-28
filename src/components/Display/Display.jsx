@@ -1,6 +1,5 @@
 import React from 'react';
 import DisplayHeader from './DisplayHeader';
-import Comment from './Comment';
 import { DisplayStyles } from '../../styles/DisplayStyles';
 import PropTypes from 'prop-types';
 import TasksListForm from './TasksListForm';
@@ -13,12 +12,12 @@ function Display(props) {
             <div className='Display'>
                 <DisplayHeader 
                     currentFolder={props.currentFolder} />
-                <Comment 
-                    currentFolder={props.currentFolder} />
                 <hr />
                 <TasksList 
                     currentFolder={props.currentFolder}
-                    tasks={props.tasks} />
+                    tasks={props.tasks} 
+                    //setCheckedStatus={props.setCheckedStatus}
+                    />
                 <TasksListForm 
                     currentFolder={props.currentFolder}
                     tasks={props.tasks} 
@@ -31,7 +30,8 @@ function Display(props) {
 Display.propTypes = {
     currentFolder: PropTypes.object,
     tasks: PropTypes.array,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    setCheckedStatus: PropTypes.func
 };
 
 export default Display;

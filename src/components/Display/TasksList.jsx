@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 
 function TasksList(props) {
 
-    const setCheckedStatus = (id) => {
-        props.tasks[id].checked = !props.tasks[id].checked;
-    };
-
     if (props.currentFolder) {
         const list = [...props.tasks.filter((e) => e.folderId == props.currentFolder.id)];
         
@@ -22,7 +18,8 @@ function TasksList(props) {
                                     key={item.text.toString()} 
                                     id={item.id}
                                     className='icon checkbox' 
-                                    onClick={(id) => setCheckedStatus(id)} />
+                                    //onClick={() => props.setCheckedStatus(item.id)} 
+                                    />
                             {item.text}
                         </label>
                     </li>
@@ -40,7 +37,8 @@ function TasksList(props) {
 
 TasksList.propTypes = {
     currentFolder: PropTypes.object,
-    tasks: PropTypes.array
+    tasks: PropTypes.array,
+    setCheckedStatus: PropTypes.func
 };
 
 export default TasksList;

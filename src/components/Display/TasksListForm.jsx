@@ -8,7 +8,7 @@ function TasksListForm(props) {
     const [activeState, setActiveState] = useState(false);
     const inputRef = useRef();
 
-    const changeState = () => {
+    const changeActiveState = () => {
         setActiveState(prev => !prev);
     };
 
@@ -21,7 +21,7 @@ function TasksListForm(props) {
         <div className={`tasksListForm ${props.currentFolder ? 'active' : 'disabled'}`}>
             <button 
                 className={`addTaskButton ${activeState ? 'disabled' : 'active'}`}
-                onClick={() => changeState()}>
+                onClick={() => changeActiveState()}>
                 <AiOutlinePlus className='icon addTaskButton'/>
                 New Task
             </button>
@@ -40,7 +40,7 @@ function TasksListForm(props) {
                 </button> 
                 <button type='button'
                         className='buttonCancel' 
-                        onClick={() => changeState()}>
+                        onClick={() => changeActiveState()}>
                         Cancel 
                 </button>
             </form>

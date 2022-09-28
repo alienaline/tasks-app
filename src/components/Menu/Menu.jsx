@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonRemove from './ButtonRemove';
 import ButtonCreateFolder from './ButtonNewFolder';
 import ButtonFolder from './ButtonFolder';
-import { CgDetailsMore } from 'react-icons/cg';
+import ButtonAllFolders from './ButtonAllFolders';
 import { MenuStyles } from '../../styles/MenuStyles';
 
 function Menu(props) {
@@ -11,13 +12,10 @@ function Menu(props) {
     return (
         <MenuStyles>
             <div className="menu">
-                <button className='allFolderButton folderButton'>
-                    <CgDetailsMore className='icon'/>
-                    All Folders
-                </button>
+                <ButtonAllFolders />
                 <ul>
                     {props.folders.map((item) => 
-                        <li className='folderButton'
+                        <li className='buttonFolder'
                             key={item.folderName}
                             id={item.id}>
                             <ButtonFolder 
