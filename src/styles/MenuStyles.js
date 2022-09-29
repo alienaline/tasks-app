@@ -39,10 +39,22 @@ export const MenuStyles = styled.div`
 
     .folderName {
         font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .icon {
         margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .folderColorIcon {  
+        display: inline-flex;
+        border-radius: 50%;
+        height: 11px;
+        width: 11px;
+        background-color: black;
         vertical-align: middle;
     }
 
@@ -79,6 +91,7 @@ export const MenuStyles = styled.div`
         background-color: white;
         border: 2px solid #F1F1F1;
         border-radius: 10px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
     }
 
     .modalInput {
@@ -101,6 +114,34 @@ export const MenuStyles = styled.div`
         height: 25px;
         width: 25px;
         margin: 0 7px;
+        &:focus {
+            border: 3px solid grey;
+        }
+    }
+
+    .blue {
+        background-color: ${colors.blue};
+    }
+    .green {
+        background-color: ${colors.green};
+    }
+    .gray {
+        background-color: ${colors.gray};
+    }
+    .yellow {
+        background-color: ${colors.yellow};
+    }
+    .pink {
+        background-color: ${colors.pink};
+    }
+    .purple {
+        background-color: ${colors.purple};
+    }
+    .brown {
+        background-color: ${colors.brown};
+    }
+    .navy {
+        background-color: ${colors.navy};
     }
 
     .modalAddButton {

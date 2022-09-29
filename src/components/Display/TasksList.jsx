@@ -17,9 +17,7 @@ function TasksList(props) {
                             <input type='checkbox' 
                                     key={item.text.toString()} 
                                     id={item.id}
-                                    className='icon checkbox' 
-                                    //onClick={() => props.setCheckedStatus(item.id)} 
-                                    />
+                                    className='icon checkbox' />
                             {item.text}
                         </label>
                     </li>

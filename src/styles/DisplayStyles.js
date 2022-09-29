@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const colors = {
+    blue: '#B0E0E6',
+    green: '#B6E6BD',
+    gray: '#778899',
+    yellow: '#FFC300',
+    pink: '#FA8072',
+    purple: '#663399',
+    brown: '#A0522D',
+    navy: '#0000CD'
+};
+
 export const DisplayStyles = styled.div`
     margin: 85px 60px 60px 60px;
 
@@ -19,6 +30,31 @@ export const DisplayStyles = styled.div`
         margin-bottom: 10px;
         font-size: 36px;
         font-weight: 700;
+    }
+
+    .blue {
+        color: ${colors.blue};
+    }
+    .green {
+        color: ${colors.green};
+    }
+    .gray {
+        color: ${colors.gray};
+    }
+    .yellow {
+        color: ${colors.yellow};
+    }
+    .pink {
+        color: ${colors.pink};
+    }
+    .purple {
+        color: ${colors.purple};
+    }
+    .brown {
+        color: ${colors.brown};
+    }
+    .navy {
+        color: ${colors.navy};
     }
 
     .tasksList {

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonRemove from './ButtonRemove';
-import ButtonCreateFolder from './ButtonNewFolder';
+import ButtonNewFolder from './ButtonNewFolder';
 import ButtonFolder from './ButtonFolder';
 import ButtonAllFolders from './ButtonAllFolders';
 import { MenuStyles } from '../../styles/MenuStyles';
@@ -21,14 +21,16 @@ function Menu(props) {
                             <ButtonFolder 
                                 id={item.id}
                                 onClick={props.onClick}
-                                folderName={item.folderName}/>
+                                folderName={item.folderName}
+                                color={item.color}
+                                />
                             <ButtonRemove 
                                 id={item.id}
                                 onDelete={props.onDelete}/>
                         </li>
                     )}
                 </ul>
-                <ButtonCreateFolder />
+                <ButtonNewFolder onAdd={props.onAdd}/>
             </div>
         </MenuStyles>
     );
@@ -38,6 +40,7 @@ Menu.propTypes = {
     folders: PropTypes.array,
     onDelete: PropTypes.func,
     onClick: PropTypes.func,
+    onAdd: PropTypes.func
 };
 
 export default Menu;

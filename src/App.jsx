@@ -6,10 +6,9 @@ import Display from './components/Display/Display';
 import './App.css';
 
 function App() {
-  const [folders, setFolders] = useState([{'id': 0, 'folderName': 'Frontend', 'colorId': 0}, {'id': 1, 'folderName': 'Backend', 'colorId': 1}]);
+  const [folders, setFolders] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [currentFolder, setCurrentFolder] = useState(null);
-  let nextId = 0;
 
 
   const chooseFolderHandler = (folderId) => {
@@ -22,30 +21,22 @@ function App() {
     setFolders(folderFiltered);
     setTasks(tasksFiltered);
 
-    if (currentFolder.id == folderId) {
-      setCurrentFolder(null);
+    if (currentFolder) {
+      currentFolder.id == folderId ? setCurrentFolder(null) : currentFolder;
     }
   };
 
   const addTaskHandler = (folderId, text) => {
     if (text == '') return false;
-
-    setTasks([...tasks, {'id': nextId++, 'folderId': folderId, 'text': text, 'checked': false}]);
+    const id = tasks.length;
+    setTasks([...tasks, {'id': id, 'folderId': folderId, 'text': text, 'checked': false}]);
   };
 
-  //const setCheckedStatus = (id) => {
-  //  setTasks(({tasks}) => (
-  //    [
-  //      ...tasks,
-  //      {
-  //        ...tasks[id],
-  //       ...tasks.folderId,
-  //       ...tasks.text,
-  //        checked: !tasks[id].checked,
-  //      }
-  //    ]
-  //  ));
-  // };
+  const addFolderHandler = (folderName, color) => {
+    if (folderName == '') return false;
+    const id = folders.length;
+    setFolders([...folders, {'id': id, 'folderName': folderName, 'color': color}]);
+  };
 
   return (
     <div className='app'>
@@ -54,14 +45,13 @@ function App() {
         <Menu 
           onDelete={deleteFolderHandler}
           onClick={chooseFolderHandler}
+          onAdd={addFolderHandler}
           folders={folders}
           currentFolder={currentFolder}/>
         <Display 
           currentFolder={currentFolder}
           tasks={tasks} 
-          onClick={addTaskHandler} 
-          //setCheckedStatus={setCheckedStatus} 
-          />
+          onClick={addTaskHandler} />
       </div>
     </div>
   );

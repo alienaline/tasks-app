@@ -15,9 +15,7 @@ function Display(props) {
                 <hr />
                 <TasksList 
                     currentFolder={props.currentFolder}
-                    tasks={props.tasks} 
-                    //setCheckedStatus={props.setCheckedStatus}
-                    />
+                    tasks={props.tasks} />
                 <TasksListForm 
                     currentFolder={props.currentFolder}
                     tasks={props.tasks} 

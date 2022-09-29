@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import PropTypes from 'react-bootstrap/esm/Image';
 import {AiOutlinePlus} from 'react-icons/ai';
 import ModalNewFolder from './ModalNewFolder';
 
-function ButtonCreateFolder () {
+function ButtonNewFolder (props) {
     const [activeState, setActiveState] = useState(false);
     
     const changeActiveState = () => {
@@ -18,9 +19,14 @@ function ButtonCreateFolder () {
                 New folder
             </button>
             <ModalNewFolder activeState={activeState}
-                            onClick={changeActiveState} />
+                            onClick={changeActiveState}
+                            onAdd={props.onAdd} />
         </>
     );
 }
 
-export default ButtonCreateFolder;
+ButtonNewFolder.propTypes = {
+    onAdd: PropTypes.func,
+};
+
+export default ButtonNewFolder;
