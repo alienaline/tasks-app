@@ -9,27 +9,24 @@ import TasksList from './TasksList';
 function Display(props) {
     return (
         <DisplayStyles>
-            <div className='Display'>
-                <DisplayHeader 
-                    currentFolder={props.currentFolder} />
-                <hr />
-                <TasksList 
-                    currentFolder={props.currentFolder}
-                    tasks={props.tasks} />
-                <TasksListForm 
-                    currentFolder={props.currentFolder}
-                    tasks={props.tasks} 
-                    onClick={props.onClick} />
-            </div>
+            <DisplayHeader 
+                currentList={props.currentList} />
+            <hr />
+            <TasksList 
+                currentList={props.currentList}
+                tasks={props.tasks} />
+            <TasksListForm 
+                currentList={props.currentList}
+                tasks={props.tasks} 
+                onClick={props.onClick} />
         </DisplayStyles>
     );
 }
 
 Display.propTypes = {
-    currentFolder: PropTypes.object,
+    currentList: PropTypes.object,
     tasks: PropTypes.array,
-    onClick: PropTypes.func,
-    setCheckedStatus: PropTypes.func
+    onClick: PropTypes.func
 };
 
 export default Display;

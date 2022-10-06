@@ -1,6 +1,19 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 
-const colors = {
+const colorsUI = {
+    background: '#F4F6F8',
+    border: '#F1F1F1',
+    menuText: '#B4B4B4',
+    boxShadow: '#E6E6FA',
+    icon: '#DCDCDC',
+    iconHover: '#696969',
+    addButton: '#4DD599',
+    closeButton: '#5C5C5C',
+    defaultTextColor: '#2F4F4F',
+};
+
+const colorPicker = {
     blue: '#B0E0E6',
     green: '#B6E6BD',
     gray: '#778899',
@@ -12,17 +25,25 @@ const colors = {
 };
 
 export const MenuStyles = styled.div`
-    background-color: #F4F6F8;
-    border-right: 2px solid #F1F1F1;
+    background-color: ${colorsUI.background};
+    border-right: 2px solid ${colorsUI.border};
     min-height: 100vh;
 
     .menu {
         display: grid;
         align-content: start;
-        margin: 80px 20px;
+        margin: 85px 15px;
+        color: ${colorsUI.menuText};
+        position: relative;
     }
 
-    .buttonFolder {
+    .menuHeader {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0 10px 10px 10px;
+    }
+
+    .listButton {
         background: none;
         display: flex;
         justify-content: space-between;
@@ -31,25 +52,27 @@ export const MenuStyles = styled.div`
         margin: 5px 0;
         border-radius: 5px;
         text-align: left;
+        transition: background-color 0.5s linear;
         &:hover {
             background-color: white;
-            box-shadow: 0 0 10px #E6E6FA;
+            box-shadow: 0 0 10px  ${colorsUI.boxShadow};
         }
     }
 
-    .folderName {
+    .listName {
         font-size: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: ${colorsUI.defaultTextColor};
     }
 
     .icon {
-        margin-right: 10px;
+        margin-right: 15px;
         vertical-align: middle;
     }
 
-    .folderColorIcon {  
+    .listColorIcon {  
         display: inline-flex;
         border-radius: 50%;
         height: 11px;
@@ -60,21 +83,18 @@ export const MenuStyles = styled.div`
 
     .removeButton {
         vertical-align: middle;
-        color: #DCDCDC; 
+        color: ${colorsUI.icon}; 
         &:hover {
-            color: #696969;
+            color: ${colorsUI.iconHover};
         }
     }
 
-    .allFolderButton {
-        justify-content: flex-start; 
-    }
-
-    .createFolderButton {
+    .createListButton {
         justify-content: flex-start;
-        color: #DCDCDC;
+        color: ${colorsUI.icon};
+        transition: background-color 0.5s linear;
         &:hover {
-            color: #696969;
+            color: ${colorsUI.iconHover};
         }
     }
 
@@ -89,16 +109,17 @@ export const MenuStyles = styled.div`
 
     .modalContent {
         background-color: white;
-        border: 2px solid #F1F1F1;
+        border: 2px solid ${colorsUI.border};
         border-radius: 10px;
         box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
     }
 
     .modalInput {
-        border: 2px solid #F1F1F1;
+        border: 2px solid ${colorsUI.border};
         border-radius: 5px;
         padding: 10px 15px;
         margin: 18px;
+        color: ${colorsUI.defaultTextColor};
     }
 
     .colorPicker {
@@ -109,43 +130,45 @@ export const MenuStyles = styled.div`
     }
 
     .colorPickerIcon {
-        background: ${colors.blue};
+        background: ${colorPicker.blue};
         border-radius: 50%;
         height: 25px;
         width: 25px;
         margin: 0 7px;
+        cursor: pointer;
+        transition: border 1s ease;
         &:focus {
-            border: 3px solid grey;
+            border: 3px solid #DAF7A6;
         }
     }
 
     .blue {
-        background-color: ${colors.blue};
+        background-color: ${colorPicker.blue};
     }
     .green {
-        background-color: ${colors.green};
+        background-color: ${colorPicker.green};
     }
     .gray {
-        background-color: ${colors.gray};
+        background-color: ${colorPicker.gray};
     }
     .yellow {
-        background-color: ${colors.yellow};
+        background-color: ${colorPicker.yellow};
     }
     .pink {
-        background-color: ${colors.pink};
+        background-color: ${colorPicker.pink};
     }
     .purple {
-        background-color: ${colors.purple};
+        background-color: ${colorPicker.purple};
     }
     .brown {
-        background-color: ${colors.brown};
+        background-color: ${colorPicker.brown};
     }
     .navy {
-        background-color: ${colors.navy};
+        background-color: ${colorPicker.navy};
     }
 
     .modalAddButton {
-        background-color: #4DD599;
+        background-color: ${colorsUI.addButton};
         border-radius: 5px;
         color: white;
         padding: 10px 15px;
@@ -154,7 +177,7 @@ export const MenuStyles = styled.div`
 
     .modalCloseButton {
         position: absolute;
-        background-color: #5C5C5C;
+        background-color: ${colorsUI.closeButton};
         border-radius: 50%;
         padding: 3px 5px;
         top: -7px;
@@ -174,14 +197,31 @@ export const MenuStyles = styled.div`
         display: none;
     }
 
+    @media (max-width: 1280px) {
+
+        .menu {
+            margin: 85px 7px;
+        }
+
+        .modal {
+            position: relative;
+        }
+    }
+
     @media (max-width: 960px) {
-        display: absolute;
+        position: absolute;
         width: 230px;
+        top: 40px;
+        box-shadow: 0px 10px 30px ${colorsUI.boxShadow};
 
         .menu {
             display: block;
-            margin: 0 15px;
+            margin: 85px auto;
             width: 200px;
+        }
+
+        .modal {
+            position: absolute;
         }
     }
 `;

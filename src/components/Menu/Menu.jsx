@@ -2,45 +2,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonRemove from './ButtonRemove';
-import ButtonNewFolder from './ButtonNewFolder';
-import ButtonFolder from './ButtonFolder';
-import ButtonAllFolders from './ButtonAllFolders';
+import ButtonNewList from './ButtonNewList';
+import ButtonList from './ButtonList';
 import { MenuStyles } from '../../styles/MenuStyles';
 
 function Menu(props) {
 
     return (
-        <MenuStyles>
-            <div className="menu">
-                <ButtonAllFolders />
-                <ul>
-                    {props.folders.map((item) => 
-                        <li className='buttonFolder'
-                            key={item.folderName}
-                            id={item.id}>
-                            <ButtonFolder 
-                                id={item.id}
-                                onClick={props.onClick}
-                                folderName={item.folderName}
-                                color={item.color}
-                                />
-                            <ButtonRemove 
-                                id={item.id}
-                                onDelete={props.onDelete}/>
-                        </li>
-                    )}
-                </ul>
-                <ButtonNewFolder onAdd={props.onAdd}/>
-            </div>
-        </MenuStyles>
+        props.activeMenu &&
+            <MenuStyles>
+                <div className='menu'>
+                    <h1 className='menuHeader'>Your lists</h1>
+                    <ul>
+                        {props.lists.map((item) => 
+                            <li className='listButton'
+                                key={item.id}
+                                id={item.id}>
+                                <ButtonList 
+                                    id={item.id}
+                                    onClick={props.onClick}
+                                    listName={item.listName}
+                                    color={item.color}
+                                    />
+                                <ButtonRemove 
+                                    id={item.id}
+                                    onDelete={props.onDelete}/>
+                            </li>
+                        )}
+                    </ul>
+                    <ButtonNewList onAdd={props.onAdd}/>
+                </div>
+            </MenuStyles>
     );
 }
 
 Menu.propTypes = {
-    folders: PropTypes.array,
+    lists: PropTypes.array,
     onDelete: PropTypes.func,
     onClick: PropTypes.func,
-    onAdd: PropTypes.func
+    onAdd: PropTypes.func,
+    activeMenu: PropTypes.bool,
 };
 
 export default Menu;

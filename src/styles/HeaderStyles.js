@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
+const colorsUI = {
+    background: '#DAF7A6',
+    border: '#8FBC8B',
+    icon: '#8FBC8B'
+};
+
 export const HeaderStyles = styled.header`
     height: 40px;
-    background-color: #DAF7A6;
+    background-color: ${colorsUI.background};
     display: flex;
     align-items: center;
 
     .menu {
         display: none;
     }
+
 
     @media (max-width: 960px) {
         .menu {
@@ -18,13 +25,13 @@ export const HeaderStyles = styled.header`
 
         .menuButton {
             display: flex;
-            border: 1px solid #8FBC8B;
+            border: 1px solid ${colorsUI.border};
             border-radius: 4px;
             padding: 5px 8px;
         }
 
         .icon {
-            color: #8FBC8B;
+            color: ${colorsUI.icon};
         }
     }
 `;

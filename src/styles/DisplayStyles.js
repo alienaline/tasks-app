@@ -1,4 +1,15 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
+
+const colorsUI = {
+    border: '#F1F1F1',
+    mockText: '#B4B4B4',
+    grayButton: '#9C9C9C',
+    submitButton: '#4DD599',
+    cancelButton: '#F4F6F8',
+    cancelButtonText: '#9C9C9C',
+    defaultTextColor: '#2F4F4F'
+};
 
 const colors = {
     blue: '#B0E0E6',
@@ -16,20 +27,20 @@ export const DisplayStyles = styled.div`
 
     .icon {
         margin-right: 10px;
-        color: #75787e;
         vertical-align: middle;
     }
 
     hr {
-        background: #F1F1F1;
-        border: 1px solid #F1F1F1;
+        background: ${colorsUI.border};
+        border: 1px solid ${colorsUI.border};
         margin: 5px 0;
     }
 
-    .folderHeader {
+    .listHeader {
         margin-bottom: 10px;
         font-size: 36px;
         font-weight: 700;
+        color: ${colorsUI.defaultTextColor};
     }
 
     .blue {
@@ -67,10 +78,11 @@ export const DisplayStyles = styled.div`
 
     .taskText {
         font-size: 22px;
+        color: ${colorsUI.defaultTextColor}
     }
 
     .mockText {
-        color: #B4B4B4;
+        color: ${colorsUI.mockText};
         font-size: 22px;
         margin: 15px 0;
     }
@@ -79,8 +91,8 @@ export const DisplayStyles = styled.div`
         margin: 10px 0;
     }
 
-    .addTaskButton {
-        color: #9C9C9C;
+    .newTaskButton {
+        color: ${colorsUI.grayButton};
         vertical-align: 
     }
 
@@ -92,25 +104,26 @@ export const DisplayStyles = styled.div`
 
     .inputTasksForm {
         width: 100%;
-        border: 1px solid #EFEFEF;
+        border: 2px solid ${colorsUI.border};
         border-radius: 4px;
         padding: 10px 15px;
         margin: 0 0 15px 0;
+        color: ${colorsUI.defaultTextColor};
     }
 
-    .buttonSubmit {
+    .submitButton {
         border-radius: 4px;
         padding: 10px 15px;
-        background-color: #4DD599;
+        background-color: ${colorsUI.submitButton};
         color: white;
         margin: 0 15px 0 0;
     }
 
-    .buttonCancel {
+    .cancelButton {
         border-radius: 4px;
         padding: 10px 15px;
-        background-color: #F4F6F8;
-        color: #9C9C9C;
+        background-color: ${colorsUI.cancelButton};
+        color: ${colorsUI.cancelButtonText};
     }
 
     .active {

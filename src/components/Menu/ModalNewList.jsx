@@ -1,0 +1,64 @@
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import ColorPicker from './ColorPicker';
+import {CgClose} from 'react-icons/cg';
+import PropTypes from 'prop-types';
+
+
+function ModalNewList(props) {
+
+    const [listName, setListName] = useState('');
+    const [color, setColor] = useState('gray');
+
+
+    const setListNameHandler = (event) => {
+        setListName(event.target.value);
+    };
+
+    const setColorHandler = (event) => {
+        setColor(event.target.id);
+    };
+
+    const addList = (event) => {
+        event.preventDefault();
+        props.onAdd(listName, color);
+        setListName('');
+        props.onClick();
+    };
+
+    return (
+        <div className={`modal ${props.activeState ? 'active' : 'disabled'}`}>
+            <div className="modalContent">
+                <form 
+                    className='modalForm'
+                    onSubmit={addList}>
+                    <input 
+                        type='text' 
+                        className='modalInput' 
+                        placeholder='Enter list name'
+                        value={listName}
+                        onChange={setListNameHandler} />
+                    <ColorPicker value={color} onClick={setColorHandler} />
+                    <button 
+                        type='submit' 
+                        className='modalAddButton'>
+                        Add list
+                    </button>
+                </form>
+                <button type='button' className='modalCloseButton'>
+                    <CgClose 
+                        className='modalCloseButtonIcon'
+                        onClick={props.onClick} />
+                </button>
+            </div>
+        </div>
+    );
+}
+
+ModalNewList.propTypes = {
+    activeState: PropTypes.bool,
+    onClick: PropTypes.func,
+    onAdd: PropTypes.func
+};
+
+export default ModalNewList;

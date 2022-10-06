@@ -35,7 +35,7 @@ function ColorPicker(props) {
             <input type='button' 
                     id='navy' 
                     className='colorPickerIcon navy'
-                    onClick={() => props.onClick()} />
+                    onClick={props.onClick} />
         </div>
     );
 }

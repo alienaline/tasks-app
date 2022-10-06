@@ -6,40 +6,46 @@ import PropTypes from 'prop-types';
 
 function TasksListForm(props) {
     const [activeState, setActiveState] = useState(false);
-    const inputRef = useRef();
+    const [inputValue, setInputValue] = useState('');
 
     const changeActiveState = () => {
         setActiveState(prev => !prev);
     };
 
-    const addToList = () => {
-        props.onClick(props.currentFolder.id, inputRef.current.value);
-        inputRef.current.value = '';
+    const handleSetInputValue = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const addToList = (event) => {
+        event.preventDefault();
+        props.onClick(props.currentList.id, inputValue);
+        setInputValue('');
     };
 
     return (
-        <div className={`tasksListForm ${props.currentFolder ? 'active' : 'disabled'}`}>
+        <div className={`tasksListForm ${props.currentList ? 'active' : 'disabled'}`}>
             <button 
-                className={`addTaskButton ${activeState ? 'disabled' : 'active'}`}
+                className={`newTaskButton ${activeState ? 'disabled' : 'active'}`}
                 onClick={() => changeActiveState()}>
-                <AiOutlinePlus className='icon addTaskButton'/>
+                <AiOutlinePlus className='icon newTaskButton'/>
                 New Task
             </button>
-            <form className={`form ${activeState ? 'active' : 'disabled'}`}>
+            <form className={`form ${activeState ? 'active' : 'disabled'}`}
+                    onSubmit={addToList}>
                 <input
-                    ref={inputRef}
+                    value={inputValue}
+                    onChange={handleSetInputValue}
                     type='text'
                     maxLength={120}
                     placeholder='write a task here'
                     className='inputTasksForm'>
                 </input>
-                <button type='button'
-                        className='buttonSubmit'
-                        onClick={() => addToList()}>
+                <button type='submit'
+                        className='submitButton' >
                         Add to list
                 </button> 
                 <button type='button'
-                        className='buttonCancel' 
+                        className='cancelButton' 
                         onClick={() => changeActiveState()}>
                         Cancel 
                 </button>
@@ -49,7 +55,7 @@ function TasksListForm(props) {
 }
 
 TasksListForm.propTypes = {
-    currentFolder: PropTypes.object,
+    currentList: PropTypes.object,
     onClick: PropTypes.func,
 };
 

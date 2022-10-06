@@ -1,57 +1,63 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Display from './components/Display/Display';
 import './App.css';
 
 function App() {
-  const [folders, setFolders] = useState([]);
+  const [lists, setLists] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [currentFolder, setCurrentFolder] = useState(null);
+  const [currentList, setCurrentList] = useState(null);
+  const [activeMenu, setActiveMenu] = useState(true);
 
-
-  const chooseFolderHandler = (folderId) => {
-    setCurrentFolder(folders[folderId]);
+  const handleChooseList = (listId) => {
+    setCurrentList(...lists.filter((item) => item.id == listId));
   };
 
-  const deleteFolderHandler = (folderId) => {
-    const folderFiltered = folders.filter(elem => elem.id !== folderId);
-    const tasksFiltered = tasks.filter(elem => elem.folderId !== folderId);
-    setFolders(folderFiltered);
+  const handleDeleteList = (listId) => {
+    const listFiltered = lists.filter(elem => elem.id !== listId);
+    const tasksFiltered = tasks.filter(elem => elem.listId !== listId);
+    setLists(listFiltered);
     setTasks(tasksFiltered);
 
-    if (currentFolder) {
-      currentFolder.id == folderId ? setCurrentFolder(null) : currentFolder;
+    if (currentList) {
+      currentList.id == listId ? setCurrentList(null) : currentList;
     }
   };
 
-  const addTaskHandler = (folderId, text) => {
-    if (text == '') return false;
-    const id = tasks.length;
-    setTasks([...tasks, {'id': id, 'folderId': folderId, 'text': text, 'checked': false}]);
+  const handleAddTask = (listId, text) => {
+    if (text.trim() == '') return false;
+    const lastId = tasks.length ? (tasks[tasks.length - 1].id + 1) : 0;
+    setTasks([...tasks, {'id': lastId, 'listId': listId, 'text': text}]);
   };
 
-  const addFolderHandler = (folderName, color) => {
-    if (folderName == '') return false;
-    const id = folders.length;
-    setFolders([...folders, {'id': id, 'folderName': folderName, 'color': color}]);
+  const handleAddList = (listName, color) => {
+    if (listName.trim() == '') return false;
+    const lastId = lists.length ? (lists[lists.length - 1].id + 1) : 0;
+    setLists([...lists, {'id': lastId, 'listName': listName, 'color': color}]);
+  };
+
+  const handleSetActiveMenu = () => {
+    setActiveMenu(!activeMenu);
   };
 
   return (
     <div className='app'>
-      <Header />
+      <Header 
+        onClick={handleSetActiveMenu}
+      />
       <div className='desktop'>
         <Menu 
-          onDelete={deleteFolderHandler}
-          onClick={chooseFolderHandler}
-          onAdd={addFolderHandler}
-          folders={folders}
-          currentFolder={currentFolder}/>
+          activeMenu={activeMenu}
+          onDelete={handleDeleteList}
+          onClick={handleChooseList}
+          onAdd={handleAddList}
+          lists={lists} />
         <Display 
-          currentFolder={currentFolder}
+          currentList={currentList}
           tasks={tasks} 
-          onClick={addTaskHandler} />
+          onClick={handleAddTask}  />
       </div>
     </div>
   );
