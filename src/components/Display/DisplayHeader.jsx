@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { selectCurrentList } from '../../store/listsSlice/listsSlice';
 
-function FolderHeader(props) {
+function FolderHeader() {
+    const currentList = useSelector(selectCurrentList);
+
     return (
-        <h1 className={`listHeader ${props.currentList ? props.currentList.color : ''}`}>
-            { props.currentList ? props.currentList.listName : 'Welcome!' }
+        <h1 className={`listHeader ${currentList ? currentList.color : ''}`}>
+            { currentList.listName ? currentList.listName : 'Welcome!' }
         </h1>
     );
 }
-
-FolderHeader.propTypes = {
-    currentList: PropTypes.object,
-};
 
 export default FolderHeader;

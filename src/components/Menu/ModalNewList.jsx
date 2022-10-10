@@ -3,25 +3,18 @@ import React, { useState } from 'react';
 import ColorPicker from './ColorPicker';
 import {CgClose} from 'react-icons/cg';
 import PropTypes from 'prop-types';
-
+import { useDispatch } from 'react-redux';
+import { addList } from '../../store/listsSlice/listsSlice';
 
 function ModalNewList(props) {
-
     const [listName, setListName] = useState('');
     const [color, setColor] = useState('gray');
+    const dispatch = useDispatch();
 
-
-    const setListNameHandler = (event) => {
-        setListName(event.target.value);
-    };
-
-    const setColorHandler = (event) => {
-        setColor(event.target.id);
-    };
-
-    const addList = (event) => {
+    const handleAddList = (event) => {
         event.preventDefault();
-        props.onAdd(listName, color);
+        if (listName == '') return false;
+        dispatch(addList({listName, color}));
         setListName('');
         props.onClick();
     };
@@ -31,14 +24,16 @@ function ModalNewList(props) {
             <div className="modalContent">
                 <form 
                     className='modalForm'
-                    onSubmit={addList}>
+                    onSubmit={handleAddList}>
                     <input 
                         type='text' 
                         className='modalInput' 
                         placeholder='Enter list name'
                         value={listName}
-                        onChange={setListNameHandler} />
-                    <ColorPicker value={color} onClick={setColorHandler} />
+                        onChange={(event) => setListName(event.target.value)} />
+                    <ColorPicker 
+                        value={color} 
+                        onClick={(event) => setColor(event.target.id)} />
                     <button 
                         type='submit' 
                         className='modalAddButton'>

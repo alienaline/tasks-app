@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CgClose} from 'react-icons/cg';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCurrentList, deleteList, selectCurrentList } from '../../store/listsSlice/listsSlice';
+import { deleteTasks } from '../../store/tasksSlice/tasksSlice';
 
 function ButtonRemove(props) {
-    
+    const dispatch = useDispatch();
+    const currentList = useSelector(selectCurrentList);
+
+    const handleDeleteList = () => {
+        dispatch(deleteList({id: props.id}));
+        dispatch(deleteTasks({id: props.id}));
+        if (currentList.id == props.id) dispatch(clearCurrentList());
+    };
+
     return (
-        <button className='removeButton' onClick={() => props.onDelete(props.id)}>
+        <button className='removeButton' onClick={handleDeleteList}>
             <CgClose className='removeButton'/>
         </button> 
     );

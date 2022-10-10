@@ -2,39 +2,37 @@
 import React, {useState, useRef} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentList } from '../../store/listsSlice/listsSlice';
+import { addTask } from '../../store/tasksSlice/tasksSlice';
 
 
-function TasksListForm(props) {
+function TasksListForm() {
     const [activeState, setActiveState] = useState(false);
     const [inputValue, setInputValue] = useState('');
+    const currentList = useSelector(selectCurrentList);
+    const dispatch = useDispatch();
 
-    const changeActiveState = () => {
-        setActiveState(prev => !prev);
-    };
-
-    const handleSetInputValue = (event) => {
-        setInputValue(event.target.value);
-    };
-
-    const addToList = (event) => {
+    const handleAddTask = (event) => {
         event.preventDefault();
-        props.onClick(props.currentList.id, inputValue);
+        if (inputValue == '') return false;
+        dispatch(addTask({listId: currentList.id, text: inputValue}));
         setInputValue('');
     };
 
     return (
-        <div className={`tasksListForm ${props.currentList ? 'active' : 'disabled'}`}>
+        <div className={`tasksListForm ${currentList.listName ? 'active' : 'disabled'}`}>
             <button 
                 className={`newTaskButton ${activeState ? 'disabled' : 'active'}`}
-                onClick={() => changeActiveState()}>
+                onClick={() => setActiveState(prev => !prev)}>
                 <AiOutlinePlus className='icon newTaskButton'/>
                 New Task
             </button>
             <form className={`form ${activeState ? 'active' : 'disabled'}`}
-                    onSubmit={addToList}>
+                    onSubmit={handleAddTask}>
                 <input
                     value={inputValue}
-                    onChange={handleSetInputValue}
+                    onChange={(event) => setInputValue(event.target.value)}
                     type='text'
                     maxLength={120}
                     placeholder='write a task here'
@@ -46,7 +44,7 @@ function TasksListForm(props) {
                 </button> 
                 <button type='button'
                         className='cancelButton' 
-                        onClick={() => changeActiveState()}>
+                        onClick={() => setActiveState(prev => !prev)}>
                         Cancel 
                 </button>
             </form>

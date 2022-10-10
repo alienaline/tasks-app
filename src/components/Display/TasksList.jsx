@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentList } from '../../store/listsSlice/listsSlice';
+import { selectTasks, toggleTask } from '../../store/tasksSlice/tasksSlice';
 
-function TasksList(props) {
+function TasksList() {
+    const currentList = useSelector(selectCurrentList);
+    const tasks = useSelector(selectTasks);
+    const dispatch = useDispatch();
 
-    if (props.currentList) {
-        const list = [...props.tasks.filter((event) => event.listId == props.currentList.id)];
+    if (currentList.listName) {
+        const list = [...tasks.filter((item) => item.listId == currentList.id)];
 
         return (
             <ul className='tasksList'>
@@ -20,6 +25,7 @@ function TasksList(props) {
                                 type='checkbox' 
                                 key={item.text.toString()} 
                                 id={item.id}
+                                onClick={() => dispatch(toggleTask(item.id))}
                                 className='icon checkbox' />
                             {item.text}
                         </label>
@@ -35,11 +41,5 @@ function TasksList(props) {
         );
     }
 }
-
-TasksList.propTypes = {
-    currentList: PropTypes.object,
-    tasks: PropTypes.array,
-    setCheckedStatus: PropTypes.func
-};
 
 export default TasksList;

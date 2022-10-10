@@ -9,15 +9,10 @@ import TasksList from './TasksList';
 function Display(props) {
     return (
         <DisplayStyles>
-            <DisplayHeader 
-                currentList={props.currentList} />
+            <DisplayHeader />
             <hr />
-            <TasksList 
-                currentList={props.currentList}
-                tasks={props.tasks} />
+            <TasksList />
             <TasksListForm 
-                currentList={props.currentList}
-                tasks={props.tasks} 
                 onClick={props.onClick} />
         </DisplayStyles>
     );

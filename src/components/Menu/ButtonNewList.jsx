@@ -4,25 +4,20 @@ import PropTypes from 'prop-types';
 import {AiOutlinePlus} from 'react-icons/ai';
 import ModalNewList from './ModalNewList';
 
-function ButtonNewList (props) {
+function ButtonNewList () {
     const [activeState, setActiveState] = useState(false);
-    
-    const changeActiveState = () => {
-        setActiveState(prev => !prev);
-    };
 
     return (
         <>
             <button 
                 className='createListButton listButton'
-                onClick={() => changeActiveState()}>
+                onClick={() => setActiveState(prev => !prev)}>
                 <AiOutlinePlus className='icon'/>
                 New list
             </button>
             <ModalNewList 
                 activeState={activeState}
-                onClick={changeActiveState}
-                onAdd={props.onAdd} />
+                onClick={() => setActiveState(prev => !prev)} />
         </>
     );
 }
