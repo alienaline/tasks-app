@@ -10,20 +10,26 @@ const tasksSlice = createSlice({
             const lastId = state.tasks.length ? (state.tasks[state.tasks.length - 1].id + 1) : 0;
             state.tasks = [
                 ...state.tasks, 
-                {'id': lastId, 'listId': action.payload.listId, 'text': action.payload.text, state: false}
+                {'id': lastId, 'listId': action.payload.listId, 'text': action.payload.text, completed: false}
             ];
         },
 
-        toggleTask: (state) => {
-            state.tasks = [...state.tasks];
+        toggleTask: (state, action) => {
+            state.tasks = state.tasks.map((item) => 
+                item.id == action.payload ? {...item, completed: !item.completed} : item
+            );
+        },
+
+        deleteTask: (state, action) => {
+            state.tasks = [...state.tasks.filter((item) => item.id !== action.payload)];
         },
 
         deleteTasks: (state, action) => {
-            state.tasks = [...state.tasks.filter((item) => item.listId !== action.payload.id)];
+            state.tasks = [...state.tasks.filter((item) => item.listId !== action.payload)];
         }
     }
 });
 
 export const selectTasks = state => state.tasks.tasks;
-export const { addTask, toggleTask, deleteTasks } = tasksSlice.actions;
+export const { addTask, toggleTask, deleteTasks, deleteTask } = tasksSlice.actions;
 export default tasksSlice.reducer;

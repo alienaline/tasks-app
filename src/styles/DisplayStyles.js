@@ -8,7 +8,8 @@ const colorsUI = {
     submitButton: '#4DD599',
     cancelButton: '#F4F6F8',
     cancelButtonText: '#9C9C9C',
-    defaultTextColor: '#2F4F4F'
+    defaultTextColor: '#2F4F4F',
+    checkboxColor: '#4DD599'
 };
 
 const colors = {
@@ -74,11 +75,52 @@ export const DisplayStyles = styled.div`
 
     .task {
         margin: 15px 0;
+        display: flex;
+        align-items: center;
+        transition: all 1s ease;
+        word-wrap: break-word;
     }
 
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        min-width: 1em;
+        min-height: 1em;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        border: 0.15em solid ${colorsUI.checkboxColor};
+        outline: none;
+        cursor: pointer;
+    }
+
+    input.checked {
+        background-color: ${colorsUI.checkboxColor};
+    }
+    
     .taskText {
         font-size: 22px;
         color: ${colorsUI.defaultTextColor}
+    }
+
+    .buttonRemove {
+        margin: 0 15px;
+    }
+
+    .iconRemove {
+        color: ${colorsUI.grayButton};
+        &:hover {
+            color: ${colorsUI.defaultTextColor}
+        }
+    }
+
+    .buttonClear,
+    .newTaskButton {
+        display: flex;
+        align-items: center;
+        color: ${colorsUI.grayButton};
+        &:hover {
+            color: ${colorsUI.defaultTextColor}
+        }
     }
 
     .mockText {
@@ -89,11 +131,6 @@ export const DisplayStyles = styled.div`
 
     .tasksListForm {
         margin: 10px 0;
-    }
-
-    .newTaskButton {
-        color: ${colorsUI.grayButton};
-        vertical-align: 
     }
 
     .form {
@@ -133,5 +170,8 @@ export const DisplayStyles = styled.div`
     .disabled {
         display: none;
     }
-    
+
+    .completed {
+        text-decoration: line-through wavy ${colors.pink};
+    }
 `;

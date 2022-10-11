@@ -52,7 +52,6 @@ export const MenuStyles = styled.div`
         margin: 5px 0;
         border-radius: 5px;
         text-align: left;
-        transition: background-color 0.5s linear;
         &:hover {
             background-color: white;
             box-shadow: 0 0 10px  ${colorsUI.boxShadow};
@@ -91,7 +90,7 @@ export const MenuStyles = styled.div`
 
     .createListButton {
         justify-content: flex-start;
-        color: ${colorsUI.icon};
+        color: ${colorsUI.menuText};
         transition: background-color 0.5s linear;
         &:hover {
             color: ${colorsUI.iconHover};

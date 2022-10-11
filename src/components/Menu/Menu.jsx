@@ -14,7 +14,7 @@ function Menu(props) {
     return (
         props.activeMenu &&
             <MenuStyles>
-                <div className='menu'>
+                <div className={`menu ${ props.activeMenu ? 'showMenu' : 'hideMenu'}`}>
                     <h1 className='menuHeader'>Your lists</h1>
                     <ul>
                         {lists.map((item) => 

@@ -25,7 +25,7 @@ function TasksListForm() {
             <button 
                 className={`newTaskButton ${activeState ? 'disabled' : 'active'}`}
                 onClick={() => setActiveState(prev => !prev)}>
-                <AiOutlinePlus className='icon newTaskButton'/>
+                <AiOutlinePlus className='icon'/>
                 New Task
             </button>
             <form className={`form ${activeState ? 'active' : 'disabled'}`}

@@ -17,7 +17,7 @@ const listsSlice = createSlice({
         },
 
         deleteList: (state, action) => {
-            state.lists = [...state.lists.filter((list) => list.id !== action.payload.id)];
+            state.lists = [...state.lists.filter((list) => list.id !== action.payload)];
         },
 
         setCurrentList: (state, action) => {

@@ -27,6 +27,7 @@ function ModalNewList(props) {
                     onSubmit={handleAddList}>
                     <input 
                         type='text' 
+                        autoFocus
                         className='modalInput' 
                         placeholder='Enter list name'
                         value={listName}

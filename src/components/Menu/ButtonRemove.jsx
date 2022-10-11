@@ -10,8 +10,8 @@ function ButtonRemove(props) {
     const currentList = useSelector(selectCurrentList);
 
     const handleDeleteList = () => {
-        dispatch(deleteList({id: props.id}));
-        dispatch(deleteTasks({id: props.id}));
+        dispatch(deleteList(props.id));
+        dispatch(deleteTasks(props.id));
         if (currentList.id == props.id) dispatch(clearCurrentList());
     };
 

@@ -9,6 +9,7 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  transition: all 0.3s linear;
 }
 
 button {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeaderStyles } from '../../styles/HeaderStyles';
 import {AiOutlineMenu} from 'react-icons/ai';
+import { BsArrowLeft } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 function Header(props) {
@@ -11,7 +12,7 @@ function Header(props) {
                     type='button'
                     className='menuButton'
                     onClick={() => props.onClick()} >
-                    <AiOutlineMenu className='icon' />
+                    {props.activeMenu ? <BsArrowLeft className='icon' /> : <AiOutlineMenu className='icon' />}
                 </button>
             </div>
         </HeaderStyles>
@@ -19,7 +20,8 @@ function Header(props) {
 }
 
 Header.propTypes = {
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    activeMenu: PropTypes.bool
 };
 
 export default Header;

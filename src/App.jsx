@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
@@ -12,7 +10,8 @@ function App() {
   return (
     <div className='app'>
       <Header 
-        onClick={() => setActiveMenu(!activeMenu)} />
+        onClick={() => setActiveMenu(!activeMenu)}
+        activeMenu={activeMenu} />
       <div className='desktop'>
         <Menu 
           activeMenu={activeMenu} />
