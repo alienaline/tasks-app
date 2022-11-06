@@ -52,6 +52,7 @@ export const MenuStyles = styled.div`
         margin: 5px 0;
         border-radius: 5px;
         text-align: left;
+        box-sizing: border-box;
         &:hover {
             background-color: white;
             box-shadow: 0 0 10px  ${colorsUI.boxShadow};
@@ -100,6 +101,14 @@ export const MenuStyles = styled.div`
     .modal {
         margin: 10px 0;
         position: relative;
+
+        &[data-state='active'] {
+            display: block;
+        }
+
+        &[data-state='disabled'] {
+            display: none;
+        }
     }
 
     .modalForm {
@@ -188,14 +197,6 @@ export const MenuStyles = styled.div`
         vertical-align: middle;
     }
 
-    .active {
-        display: block;
-    }
-
-    .disabled {
-        display: none;
-    }
-
     @media (max-width: 1280px) {
 
         .menu {
@@ -209,18 +210,25 @@ export const MenuStyles = styled.div`
 
     @media (max-width: 960px) {
         position: absolute;
-        width: 230px;
+        width: 300px;
         top: 40px;
         box-shadow: 0px 10px 30px ${colorsUI.boxShadow};
 
         .menu {
             display: block;
-            margin: 85px auto;
-            width: 200px;
+            margin: 85px 7px;
+        }
+
+        .listButton {
+            width: 100%;
         }
 
         .modal {
             position: absolute;
         }
+    }
+
+    @media (max-width: 360px) {
+        width: 100%;
     }
 `;

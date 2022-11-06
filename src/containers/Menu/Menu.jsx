@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonRemove from './ButtonRemove';
-import ButtonNewList from './ButtonNewList';
-import ButtonList from './ButtonList';
-import { MenuStyles } from '../../styles/MenuStyles';
+import ButtonRemove from '../../components/Menu/ButtonRemove';
+import ButtonNewList from '../../components/Menu/ButtonNewList';
+import ButtonList from '../../components/Menu/ButtonList';
+import { MenuStyles } from './MenuStyles';
 import { useSelector } from 'react-redux';
 import { selectLists } from '../../store/listsSlice/listsSlice';
 
@@ -14,9 +13,9 @@ function Menu(props) {
     return (
         props.activeMenu &&
             <MenuStyles>
-                <div className={`menu ${ props.activeMenu ? 'showMenu' : 'hideMenu'}`}>
+                <div className='menu'>
                     <h1 className='menuHeader'>Your lists</h1>
-                    <ul>
+                    <ul className='menuLists'>
                         {lists.map((item) => 
                             <li className='listButton'
                                 key={item.id}

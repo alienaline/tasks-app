@@ -99,7 +99,11 @@ export const DisplayStyles = styled.div`
     
     .taskText {
         font-size: 22px;
-        color: ${colorsUI.defaultTextColor}
+        color: ${colorsUI.defaultTextColor};
+
+        &[data-state='completed'] {
+            text-decoration: line-through wavy ${colors.pink};
+        }
     }
 
     .buttonRemove {
@@ -169,9 +173,5 @@ export const DisplayStyles = styled.div`
 
     .disabled {
         display: none;
-    }
-
-    .completed {
-        text-decoration: line-through wavy ${colors.pink};
     }
 `;

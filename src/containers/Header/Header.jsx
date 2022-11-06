@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderStyles } from '../../styles/HeaderStyles';
+import { HeaderStyles } from './HeaderStyles';
 import {AiOutlineMenu} from 'react-icons/ai';
 import { BsArrowLeft } from 'react-icons/bs';
 import PropTypes from 'prop-types';

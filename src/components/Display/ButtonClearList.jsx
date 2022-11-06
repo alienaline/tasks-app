@@ -1,6 +1,6 @@
 import React from 'react';
 import { selectCurrentList } from '../../store/listsSlice/listsSlice';
-import { deleteTasks} from '../../store/tasksSlice/tasksSlice';
+import { deleteAllTasks} from '../../store/tasksSlice/tasksSlice';
 import { AiOutlineClear } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ function ButtonClearList() {
     return (
         <button
             className='buttonClear'
-            onClick={() => dispatch(deleteTasks(currentList.id))}>
+            onClick={() => dispatch(deleteAllTasks(currentList.id))}>
             <AiOutlineClear className='icon'/>
             Clear list
         </button>

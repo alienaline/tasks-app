@@ -22,13 +22,14 @@ function TasksList() {
                         key={item.id} 
                         className='task'>
                         <input 
-                                type='checkbox' 
-                                id={item.id}
-                                onClick={() => dispatch(toggleTask(item.id))}
-                                className={`icon ${item.completed ? 'checked' : ''}`} />
+                            type='checkbox' 
+                            id={item.id}
+                            onClick={() => dispatch(toggleTask(item.id))}
+                            className={`icon ${item.completed ? 'checked' : ''}`} />
                         <label 
                             htmlFor={item.id}
-                            className={`taskText ${item.completed ? 'completed' : ''}`}>
+                            className='taskText'
+                            data-state={item.completed ? 'completed' : ''}>
                             {item.text}
                         </label>
                         <button

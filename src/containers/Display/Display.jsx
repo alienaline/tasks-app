@@ -1,9 +1,9 @@
 import React from 'react';
-import DisplayHeader from './DisplayHeader';
-import { DisplayStyles } from '../../styles/DisplayStyles';
+import DisplayHeader from '../../components/Display/DisplayHeader';
+import { DisplayStyles } from './DisplayStyles';
 import PropTypes from 'prop-types';
-import TasksListForm from './TasksListForm';
-import TasksList from './TasksList';
+import TasksListForm from '../../components/Display/TasksListForm';
+import TasksList from '../../components/Display/TasksList';
 
 
 function Display(props) {

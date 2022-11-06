@@ -13,14 +13,16 @@ function ModalNewList(props) {
 
     const handleAddList = (event) => {
         event.preventDefault();
-        if (listName == '') return false;
+        if (listName.trim() == '') return false;
         dispatch(addList({listName, color}));
         setListName('');
         props.onClick();
     };
 
     return (
-        <div className={`modal ${props.activeState ? 'active' : 'disabled'}`}>
+        <div 
+            className='modal'
+            data-state={props.activeState ? 'active' : 'disabled'}>
             <div className="modalContent">
                 <form 
                     className='modalForm'
@@ -41,7 +43,9 @@ function ModalNewList(props) {
                         Add list
                     </button>
                 </form>
-                <button type='button' className='modalCloseButton'>
+                <button 
+                    type='button' 
+                    className='modalCloseButton'>
                     <CgClose 
                         className='modalCloseButtonIcon'
                         onClick={props.onClick} />

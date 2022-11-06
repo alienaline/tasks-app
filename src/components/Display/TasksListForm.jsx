@@ -15,7 +15,7 @@ function TasksListForm() {
 
     const handleAddTask = (event) => {
         event.preventDefault();
-        if (inputValue == '') return false;
+        if (inputValue.trim() == '') return false;
         dispatch(addTask({listId: currentList.id, text: inputValue}));
         setInputValue('');
     };
