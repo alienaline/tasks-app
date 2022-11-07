@@ -9,11 +9,13 @@ import TasksList from '../../components/Display/TasksList';
 function Display(props) {
     return (
         <DisplayStyles>
-            <DisplayHeader />
-            <hr />
-            <TasksList />
-            <TasksListForm 
-                onClick={props.onClick} />
+            <div className='displayContent'>
+                <DisplayHeader />
+                <hr />
+                <TasksList />
+                <TasksListForm 
+                    onClick={props.onClick} />
+            </div>
         </DisplayStyles>
     );
 }

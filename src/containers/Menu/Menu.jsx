@@ -13,7 +13,7 @@ function Menu(props) {
     return (
         props.activeMenu &&
             <MenuStyles>
-                <div className='menu'>
+                <div className='menuContent'>
                     <h1 className='menuHeader'>Your lists</h1>
                     <ul className='menuLists'>
                         {lists.map((item) => 

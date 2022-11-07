@@ -9,7 +9,8 @@ const colorsUI = {
     cancelButton: '#F4F6F8',
     cancelButtonText: '#9C9C9C',
     defaultTextColor: '#2F4F4F',
-    checkboxColor: '#4DD599'
+    checkboxColor: '#4DD599',
+    scrollbarThumb: '#FFDAB9'
 };
 
 const colors = {
@@ -24,7 +25,26 @@ const colors = {
 };
 
 export const DisplayStyles = styled.div`
-    margin: 85px 60px 60px 60px;
+    height: 100vh;
+    position: relative;
+
+    .displayContent {
+        box-sizing: border-box;
+        padding: 85px 60px 20px 60px;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 2px;
+            background-color: red;
+            background-color: ${colorsUI.scrollbarThumb};
+        }
+    }
 
     .icon {
         margin-right: 10px;
@@ -173,5 +193,9 @@ export const DisplayStyles = styled.div`
 
     .disabled {
         display: none;
+    }
+
+    @media (max-width: 385px) {
+        margin: 45px 20px;
     }
 `;

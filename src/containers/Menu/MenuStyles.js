@@ -11,6 +11,7 @@ const colorsUI = {
     addButton: '#4DD599',
     closeButton: '#5C5C5C',
     defaultTextColor: '#2F4F4F',
+    scrollbarThumb: '#FFDAB9'
 };
 
 const colorPicker = {
@@ -27,20 +28,37 @@ const colorPicker = {
 export const MenuStyles = styled.div`
     background-color: ${colorsUI.background};
     border-right: 2px solid ${colorsUI.border};
-    min-height: 100vh;
+    height: 100vh;
+    position: relative;
 
-    .menu {
+    .menuContent {
         display: grid;
         align-content: start;
-        margin: 85px 15px;
+        padding: 85px 15px 0px 15px;
         color: ${colorsUI.menuText};
-        position: relative;
     }
 
     .menuHeader {
         font-size: 36px;
         font-weight: 700;
         margin: 0 10px 10px 10px;
+    }
+
+    .menuLists {
+        height: 53vh;
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 0 5px 0 0;
+
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 2px;
+            background-color: red;
+            background-color: ${colorsUI.scrollbarThumb};
+        }
     }
 
     .listButton {
@@ -199,8 +217,8 @@ export const MenuStyles = styled.div`
 
     @media (max-width: 1280px) {
 
-        .menu {
-            margin: 85px 7px;
+        .menuContent {
+            padding: 85px 7px;
         }
 
         .modal {
@@ -214,9 +232,9 @@ export const MenuStyles = styled.div`
         top: 40px;
         box-shadow: 0px 10px 30px ${colorsUI.boxShadow};
 
-        .menu {
+        .menuContent {
             display: block;
-            margin: 85px 7px;
+            padding: 85px 7px;
         }
 
         .listButton {
@@ -228,7 +246,11 @@ export const MenuStyles = styled.div`
         }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 385px) {
         width: 100%;
+
+        .menuContent {
+            padding: 45px 7px;
+        }
     }
 `;

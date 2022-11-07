@@ -7,10 +7,15 @@ const colorsUI = {
 };
 
 export const HeaderStyles = styled.header`
-    height: 40px;
+    height: 5%;
     background-color: ${colorsUI.background};
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 5;
+
 
     .menu {
         display: none;
