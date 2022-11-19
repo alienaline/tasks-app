@@ -45,10 +45,9 @@ export const MenuStyles = styled.div`
     }
 
     .menuLists {
-        height: 53vh;
+        max-height: 53vh;
         overflow: hidden;
         overflow-y: scroll;
-        padding: 0 5px 0 0;
 
         &::-webkit-scrollbar {
             width: 3px;
