@@ -30,6 +30,7 @@ export const MenuStyles = styled.div`
     border-right: 2px solid ${colorsUI.border};
     height: 100vh;
     position: relative;
+    z-index: 1;
 
     .menuContent {
         display: grid;
@@ -155,7 +156,6 @@ export const MenuStyles = styled.div`
     }
 
     .colorPickerIcon {
-        background: ${colorPicker.blue};
         border-radius: 50%;
         height: 25px;
         width: 25px;
@@ -250,6 +250,15 @@ export const MenuStyles = styled.div`
 
         .menuContent {
             padding: 45px 7px;
+        }
+
+        .modal {
+            margin: 10px 0;
+        }
+
+        .colorPickerIcon {
+            height: 20px;
+            width: 20px;
         }
     }
 `;

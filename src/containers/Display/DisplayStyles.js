@@ -197,5 +197,14 @@ export const DisplayStyles = styled.div`
 
     @media (max-width: 385px) {
         margin: 45px 20px;
+        
+        .displayContent {
+            padding: 45px 0;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
     }
 `;

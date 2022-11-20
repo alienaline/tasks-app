@@ -7,7 +7,7 @@ const colorsUI = {
 };
 
 export const HeaderStyles = styled.header`
-    height: 5%;
+    height: 45px;
     background-color: ${colorsUI.background};
     display: flex;
     align-items: center;
@@ -23,6 +23,8 @@ export const HeaderStyles = styled.header`
 
 
     @media (max-width: 960px) {
+        height: 40px;
+
         .menu {
             display: block;
             margin: 0 15px;
